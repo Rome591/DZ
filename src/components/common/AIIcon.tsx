@@ -1,3 +1,5 @@
+import { Brain } from "lucide-react";
+import { useState } from "react";
 
 interface AIIconProps {
   className?: string;
@@ -6,6 +8,8 @@ interface AIIconProps {
 }
 
 export function AIIcon({ className = "w-4 h-4", alt = "Assistant IA", variant = "original" }: AIIconProps) {
+  const [imageError, setImageError] = useState(false);
+
   const getFilterStyle = () => {
     switch (variant) {
       case 'white':
@@ -18,17 +22,28 @@ export function AIIcon({ className = "w-4 h-4", alt = "Assistant IA", variant = 
     }
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  // Si l'image a échoué ou si on préfère l'icône par défaut, utiliser Brain
+  if (imageError) {
+    return (
+      <Brain 
+        className={className} 
+        aria-label={alt}
+        style={variant === 'white' ? { color: 'white' } : variant === 'black' ? { color: 'black' } : {}}
+      />
+    );
+  }
+
   return (
     <img 
       src="/lovable-uploads/AI.png" 
       alt={alt} 
       className={className}
       style={getFilterStyle()}
-      onError={(e) => {
-        // Fallback si l'image ne charge pas
-        console.warn('AI icon failed to load, using fallback');
-        e.currentTarget.style.display = 'none';
-      }}
+      onError={handleImageError}
     />
   );
 }
