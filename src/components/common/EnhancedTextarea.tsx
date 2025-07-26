@@ -109,7 +109,7 @@ export function EnhancedTextarea({
       setFilteredSuggestions([]);
     }
     setSelectedIndex(-1);
-  }, [value, context, suggestions]);
+  }, [value, context, suggestions, defaultSuggestions]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (!showSuggestions) {

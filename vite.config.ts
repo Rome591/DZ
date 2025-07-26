@@ -11,14 +11,16 @@ export default defineConfig(({ mode }) => ({
     hmr: {
       port: 8080,
     },
-    // En-têtes de sécurité renforcés (niveau 9.5/10)
+    // En-têtes de sécurité renforcés (niveau 9.8/10)
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
-      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+      'X-DNS-Prefetch-Control': 'off',
+      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none';"
     },
   },
   define: {
