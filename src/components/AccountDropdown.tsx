@@ -293,7 +293,7 @@ export function AccountDropdown() {
                 <button 
                   onClick={() => {
                     setAboutOpen(false);
-                    onSectionChange?.('home');
+                    onSectionChange?.('dashboard');
                   }}
                   className="cursor-pointer hover:opacity-80 transition-opacity"
                   aria-label="Retour à l'accueil"

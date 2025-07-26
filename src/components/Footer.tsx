@@ -41,18 +41,12 @@ export function Footer({ onSectionChange }: FooterProps) {
             {/* Logo and description */}
             <div className="lg:col-span-1">
               <button 
-                onClick={() => handleNavigation('home')}
+                onClick={() => handleNavigation('dashboard')}
                 className="flex items-center gap-3 mb-3 cursor-pointer hover:opacity-80 transition-opacity"
                 aria-label="Retour à l'accueil"
               >
                 <div className="w-9 h-7 bg-white rounded-lg flex items-center justify-center">
-                  <button 
-                    onClick={() => handleNavigation('home')}
-                    className="cursor-pointer"
-                    aria-label="Retour à l'accueil"
-                  >
-                    <img src="/dalil-new-logo.png" alt="Dalil.dz Logo" className="w-9 h-7 object-contain" />
-                  </button>
+                  <img src="/dalil-new-logo.png" alt="Dalil.dz Logo" className="w-9 h-7 object-contain" />
                 </div>
                 <h3 className="font-bold text-lg">dalil.dz</h3>
               </button>

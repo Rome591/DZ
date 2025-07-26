@@ -69,7 +69,7 @@ export function MainHeader({ language, activeSection, onLanguageChange, onSectio
           <div className="flex items-center gap-3 min-w-0">
             <div className="flex items-center gap-3">
               <button 
-                onClick={() => onSectionChange("home")}
+                onClick={() => onSectionChange("dashboard")}
                 className="w-20 h-15 bg-white rounded flex items-center justify-center flex-shrink-0 cursor-pointer hover:bg-gray-50 transition-colors"
                 aria-label="Retour à l'accueil"
               >
@@ -77,7 +77,7 @@ export function MainHeader({ language, activeSection, onLanguageChange, onSectio
               </button>
               <div className="min-w-0">
                 <button 
-                  onClick={() => onSectionChange("home")}
+                  onClick={() => onSectionChange("dashboard")}
                   className="text-left cursor-pointer hover:opacity-80 transition-opacity"
                   aria-label="Retour à l'accueil"
                 >
