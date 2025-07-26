@@ -23,8 +23,9 @@ interface ProcedureFormData {
   reference?: string;
 }
 
+import { log } from './securityLogger';
+
 export function extractLegalTextData(ocrText: string): Partial<LegalTextFormData> {
-  const { log } = require('./securityLogger');
   log.debug('Extraction OCR du texte:', { textLength: ocrText.length, preview: ocrText.substring(0, 200) + '...' }, 'OCRFormFiller');
   const data: Partial<LegalTextFormData> = {};
   

@@ -77,7 +77,7 @@ export class GlobalButtonHandler {
     window.addEventListener('search-user-guide', this.handleSearchUserGuide.bind(this));
   }
 
-  private showModal(title: string, content: string, actions?: Array<{label: string, action: () => void, variant?: string}>) {
+  private async showModal(title: string, content: string, actions?: Array<{label: string, action: () => void, variant?: string}>) {
     if (!this.modalContainer) return;
 
     const modal = document.createElement('div');
@@ -87,7 +87,7 @@ export class GlobalButtonHandler {
     modalContent.className = 'bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto';
     
     // Construction sécurisée du contenu modal
-    const { setSecureHTML } = require('./secureDOM');
+    const { setSecureHTML } = await import('./secureDOM');
     
     const modalWrapper = document.createElement('div');
     modalWrapper.className = 'p-6';

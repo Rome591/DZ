@@ -1,9 +1,10 @@
 // Utility functions for button onClick handlers
 
+import { log } from './securityLogger';
+
 export const createButtonHandler = (eventType: string, details: any = {}) => {
   return () => {
-    const { log } = require('./securityLogger');
-  log.debug(`Button clicked: ${eventType}`, details, 'ButtonUtils');
+    log.debug(`Button clicked: ${eventType}`, details, 'ButtonUtils');
     window.dispatchEvent(new CustomEvent(eventType, { detail: details }));
   };
 };

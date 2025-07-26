@@ -50,68 +50,68 @@ class LegalRelationshipService {
   private readonly relationshipPatterns = {
     // 1. Liens "Vu" - Références à autres publications
     vu: [
-      /\bvu\s+la\s+(loi|ordonnance|décret|arrêté|décision|circulaire|instruction)\s+n[°]\s*([\d\-\/]+)[^;]*/gi,
-      /\bvu\s+le\s+(code|décret\s+législatif|décret\s+présidentiel|décret\s+exécutif)\s+n[°]\s*([\d\-\/]+)[^;]*/gi,
-      /\bvu\s+l['\']?(arrêté|instruction|décision)\s+(?:ministériel[le]?|interministériel[le]?)?\s*n[°]\s*([\d\-\/]+)[^;]*/gi
+      /\bvu\s+la\s+(loi|ordonnance|décret|arrêté|décision|circulaire|instruction)\s+n[°]\s*([\d\-/]+)[^;]*/gi,
+      /\bvu\s+le\s+(code|décret\s+législatif|décret\s+présidentiel|décret\s+exécutif)\s+n[°]\s*([\d\-/]+)[^;]*/gi,
+      /\bvu\s+l'?(arrêté|instruction|décision)\s+(?:ministériel[le]?|interministériel[le]?)?\s*n[°]\s*([\d\-/]+)[^;]*/gi
     ],
 
     // 2. Modifications législatives
     modification: [
-      /\bmodifi[eé]\s+(?:et\s+complét[eé]\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\bmodification\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\b(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)\s+(?:est\s+)?modifi[eé][es]?/gi
+      /\bmodifi[eé]\s+(?:et\s+complét[eé]\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\bmodification\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\b(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)\s+(?:est\s+)?modifi[eé][es]?/gi
     ],
 
     // 3. Abrogations et annulations (partielles ou totales)
     abrogation: [
-      /\babrog[eé][es]?\s+(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\b(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)\s+(?:est\s+)?abrog[eé][es]?/gi,
-      /\bannul[eé][es]?\s+(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\babrog[eé][es]?\s+(?:les?\s+)?(?:articles?\s+)?([\d,\s\-et]+)\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté)\s+n[°]\s*([\d\-\/]+)/gi
+      /\babrog[eé][es]?\s+(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\b(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)\s+(?:est\s+)?abrog[eé][es]?/gi,
+      /\bannul[eé][es]?\s+(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\babrog[eé][es]?\s+(?:les?\s+)?(?:articles?\s+)?([\d,\s\-et]+)\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté)\s+n[°]\s*([\d\-/]+)/gi
     ],
 
     // 4. Approbations et endorsements
     approbation: [
-      /\bapprouv[eé][es]?\s+(?:par\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\b(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)\s+approuv[eé][es]?/gi,
-      /\bendoss[eé][es]?\s+(?:par\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi
+      /\bapprouv[eé][es]?\s+(?:par\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\b(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)\s+approuv[eé][es]?/gi,
+      /\bendoss[eé][es]?\s+(?:par\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi
     ],
 
     // 5. Contrôle de conformité et constitutionnalité
     controle: [
-      /\bcontrôle\s+de\s+(?:conformité|constitutionnalité)\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
+      /\bcontrôle\s+de\s+(?:conformité|constitutionnalité)\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
       /\bconforme?\s+(?:à\s+)?(?:la\s+)?constitution[^,.]*/gi,
-      /\bévaluation\s+constitutionnel[le]?\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi
+      /\bévaluation\s+constitutionnel[le]?\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi
     ],
 
     // 6. Extensions et applications
     extension: [
       /\bétend[ue]?\s+(?:à|aux?)\s+[^.]*/gi,
       /\bapplicable?\s+(?:à|aux?)\s+[^.]*/gi,
-      /\bapplication\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)\s+(?:à|aux?)\s+[^.]*/gi,
-      /\bélargissement\s+(?:de\s+la\s+)?portée\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi
+      /\bapplication\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)\s+(?:à|aux?)\s+[^.]*/gi,
+      /\bélargissement\s+(?:de\s+la\s+)?portée\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi
     ],
 
     // 7. Annexes et listes complémentaires
     annexe: [
-      /\bannexe[s]?\s+(?:à\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\bliste[s]?\s+(?:complémentaire[s]?\s+)?(?:à\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi,
-      /\bclassification[s]?\s+(?:de\s+)?(?:la|le|l['\'])\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-\/]+)/gi
+      /\bannexe[s]?\s+(?:à\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\bliste[s]?\s+(?:complémentaire[s]?\s+)?(?:à\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi,
+      /\bclassification[s]?\s+(?:de\s+)?(?:la|le|l')\s*(loi|décret|arrêté|ordonnance)\s+n[°]\s*([\d\-/]+)/gi
     ]
   };
 
   private readonly datePatterns = {
     gregorian: /(\d{1,2})\s+(?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/gi,
-    hijri: /(\d{1,2})\s+(?:moharram|safar|rabi[\\'\s]?\s*(?:el\s+)?(?:aouel|ethani)|joumada\s+(?:el\s+)?(?:oula|ethania)|rajab|cha[\\'\s]?bane?|ramadhan|chaoual|dhou\s+el\s+(?:kaada|hidja))\s+(\d{3,4})/gi,
+    hijri: /(\d{1,2})\s+(?:moharram|safar|rabi'\s*(?:el\s+)?(?:aouel|ethani)|joumada\s+(?:el\s+)?(?:oula|ethania)|rajab|cha'bane?|ramadhan|chaoual|dhou\s+el\s+(?:kaada|hidja))\s+(\d{3,4})/gi,
     correspondance: /correspondant\s+(?:au\s+)?(\d{1,2})\s+(?:janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/gi
   };
 
   private readonly institutionPatterns = [
-    /(?:ministère|minister)\s+(?:de\s+(?:la\s+|l['\']|du\s+|des\s+)?)?([^,.;]+)/gi,
+    /(?:ministère|minister)\s+(?:de\s+(?:la\s+|l'|du\s+|des\s+)?)?([^,.;]+)/gi,
     /(?:président|présidence)\s+de\s+la\s+république/gi,
     /premier\s+ministre/gi,
     /assemblée\s+populaire\s+nationale/gi,
-    /conseil\s+(?:constitutionnel|d['\']?état|des\s+ministres)/gi,
+    /conseil\s+(?:constitutionnel|d'?état|des\s+ministres)/gi,
     /autorité\s+(?:nationale\s+)?(?:[^,.;]+)/gi
   ];
 
@@ -369,7 +369,7 @@ class LegalRelationshipService {
     const details: LegalRelationship['details'] = {};
 
     switch (type) {
-      case 'abrogation':
+      case 'abrogation': {
         // Détecter si c'est une abrogation partielle
         const articleMatch = /articles?\s+([\d,\s\-et]+)/i.exec(matchText);
         if (articleMatch) {
@@ -379,14 +379,16 @@ class LegalRelationshipService {
           details.partialAbrogation = false;
         }
         break;
+      }
 
-      case 'extension':
+      case 'extension': {
         // Extraire le domaine d'extension
         const extensionMatch = /(?:à|aux?)\s+([^.]+)/i.exec(matchText);
         if (extensionMatch) {
           details.extensionDomain = extensionMatch[1].trim();
         }
         break;
+      }
 
       case 'controle':
         // Déterminer le niveau de conformité

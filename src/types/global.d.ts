@@ -3,6 +3,8 @@
 declare global {
   interface Window {
     // Extensions pour les propriétés window si nécessaire
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+    [key: string]: unknown;
   }
 }
 
