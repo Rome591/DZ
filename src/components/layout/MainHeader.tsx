@@ -129,7 +129,7 @@ export function MainHeader({ language, activeSection, onLanguageChange, onSectio
             
             <MessagesDropdown />
             <NotificationDropdown />
-            <AccountDropdown />
+            <AccountDropdown onSectionChange={onSectionChange} />
             
             <Sheet>
               <SheetTrigger asChild className="md:hidden">

@@ -21,7 +21,11 @@ import {
   Flag
 } from "lucide-react";
 
-export function AccountDropdown() {
+interface AccountDropdownProps {
+  onSectionChange?: (section: string) => void;
+}
+
+export function AccountDropdown({ onSectionChange }: AccountDropdownProps = {}) {
   const [open, setOpen] = useState(false);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
