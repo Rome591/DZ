@@ -1,5 +1,5 @@
 
-import { Dashboard } from "@/components/Dashboard";
+import { PersonalDashboard as Dashboard } from "@/components/dashboard/PersonalDashboard";
 import { LegalTextsSections } from "@/components/LegalTextsSections";
 import { AdministrativeProcedures } from "@/components/AdministrativeProcedures";
 import { ProceduresSections } from "@/components/ProceduresSections";
