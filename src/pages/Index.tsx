@@ -42,13 +42,24 @@ const Index = () => {
   // Navigation with browser history
   const handleSectionChange = useCallback((newSection: string) => {
     console.log('Attempting to navigate to section:', newSection);
+    
+    // Vérifier que la section est valide et ne contient pas d'URL externe
+    if (typeof newSection !== 'string' || newSection.includes('http://') || newSection.includes('https://')) {
+      console.warn(`Section invalide ou URL externe détectée: ${newSection}`);
+      return;
+    }
+    
     if (VALID_SECTIONS.has(newSection)) {
-      if (newSection === "dashboard") {
-        navigate("/", { replace: false });
-      } else {
-        navigate(`/${newSection}`, { replace: false });
+      try {
+        if (newSection === "dashboard") {
+          navigate("/", { replace: false });
+        } else {
+          navigate(`/${newSection}`, { replace: false });
+        }
+        console.log('Successfully navigated to section:', newSection);
+      } catch (error) {
+        console.error('Navigation error:', error);
       }
-      console.log('Successfully navigated to section:', newSection);
     } else {
       console.warn(`Section invalide tentée: ${newSection}`);
     }

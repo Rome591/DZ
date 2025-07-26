@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Plus, X } from "lucide-react";
 
@@ -25,6 +25,9 @@ export function ProcedureSummaryModal({
             <CheckCircle className="w-5 h-5 text-green-600" />
             Procédure ajoutée avec succès
           </DialogTitle>
+          <DialogDescription>
+            La procédure administrative a été enregistrée et est maintenant disponible dans le système.
+          </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -160,6 +160,9 @@ export function ApprovalQueueModal({
              'File d\'attente d\'approbation'}
             <Badge variant="secondary">{filteredItems.length} éléments en attente</Badge>
           </DialogTitle>
+          <DialogDescription>
+            Gérez les documents en attente d'approbation avant leur publication dans la base de données.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 
@@ -26,6 +26,9 @@ export function TestSortModal({ isOpen, onClose, onApplySort }: TestSortModalPro
             <ArrowUpDown className="w-5 h-5" />
             Test Tri
           </DialogTitle>
+          <DialogDescription>
+            Interface de test pour les fonctionnalités de tri.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">

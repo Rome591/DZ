@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { FilterIcon } from "lucide-react";
 
@@ -25,6 +25,9 @@ export function TestFilterModal({ isOpen, onClose, onApplyFilters }: TestFilterM
             <FilterIcon className="w-5 h-5" />
             Test Filtrage
           </DialogTitle>
+          <DialogDescription>
+            Interface de test pour les fonctionnalités de filtrage.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
