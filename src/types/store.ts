@@ -62,6 +62,7 @@ export interface AppState {
   configuration: any;
   forumMembers: any[];
   currentUser: any;
+  currentSection: string;
 }
 
 export interface AppActions {
@@ -83,6 +84,13 @@ export interface AppActions {
   setCurrentUser: (user: any) => void;
   searchLegalTexts: (query: string) => LegalText[];
   searchProcedures: (query: string) => Procedure[];
+  setCurrentSection: (section: string) => void;
+  globalSearch: (query: string) => {
+    legalTexts: LegalText[];
+    procedures: Procedure[];
+    news: NewsItem[];
+    templates: DocumentTemplate[];
+  };
 }
 
 export type AppStore = AppState & AppActions;

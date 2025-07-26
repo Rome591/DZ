@@ -15,6 +15,7 @@ export const useAppStore = create<AppStore>((set, get) => ({
   configuration: {},
   forumMembers: [],
   currentUser: null,
+  currentSection: 'dashboard',
   
   // Actions pour les textes juridiques
   addLegalText: (text: LegalText) => {
@@ -148,5 +149,28 @@ export const useAppStore = create<AppStore>((set, get) => ({
   // Utilisateur actuel
   setCurrentUser: (user: any) => {
     set({ currentUser: user });
+  },
+
+  // Navigation
+  setCurrentSection: (section: string) => {
+    set({ currentSection: section });
+  },
+
+  // Recherche globale
+  globalSearch: (query: string) => {
+    const state = get();
+    const results = {
+      legalTexts: state.searchLegalTexts(query),
+      procedures: state.searchProcedures(query),
+      news: state.news.filter(item => 
+        item.title?.toLowerCase().includes(query.toLowerCase()) ||
+        item.content?.toLowerCase().includes(query.toLowerCase())
+      ),
+      templates: state.templates.filter(template =>
+        template.name?.toLowerCase().includes(query.toLowerCase()) ||
+        template.description?.toLowerCase().includes(query.toLowerCase())
+      )
+    };
+    return results;
   }
 }));
